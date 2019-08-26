@@ -4,7 +4,8 @@
   "description": "GitHub API application",
   "scripts": {
     "lint": "eslint homework",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "start": "node homework/indexpromise.js"
   },
   "author": "Jim Cramer",
   "license": "CC-BY-4.0",
@@ -18,5 +19,9 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "prettier": "^1.15.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "node-fetch": "^2.6.0"
   }
 }

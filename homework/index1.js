@@ -16,6 +16,27 @@
     xhr.send();
   }
 
+  /*  
+	fetch(url)
+	.then(function(response => {
+	return response.json();
+	}))
+	
+	
+	
+	function fetchMode(url){
+		return fetch(url)
+			.then(response => {
+				if (response.status !== 200) {
+					console.log(`Network error: ${response.status} - ${response.statusText}`);
+				});
+    .then(data => {
+			console.log(data);
+		})
+				.catch(err => {
+					console.log('Fetch Error', err);
+				}); */
+
   function createAndAppend(name, parent, options = {}) {
     const elem = document.createElement(name);
     parent.appendChild(elem);
@@ -43,15 +64,25 @@
   }
   // get info of repositories API
   function getRepositories() {
-    fetchJSON(HYF_REPOS_URL, (err, listOfRepos) => {
-      listOfRepos.sort(sortByName).forEach(repoDataObj => {
-        createAndAppend('option', document.getElementById('dropdown-select'), {
-          text: repoDataObj.name,
+    fetch(HYF_REPOS_URL)
+      .then(response => {
+        if (response.status !== 200) {
+          console.log(`Network error: ${response.status} - ${response.statusText}`);
+        }
+      })
+      .then(response => {
+        console.log(response);
+        const listOfRepos = response.json();
+        listOfRepos.sort(sortByName).forEach(repoDataObj => {
+          createAndAppend('option', document.getElementById('dropdown-select'), {
+            text: repoDataObj.name,
+          });
         });
+        listenerSelect(listOfRepos);
+      })
+      .catch(err => {
+        console.log('Fetch Error', err);
       });
-
-      listenerSelect(listOfRepos);
-    });
   }
 
   // sort repositories

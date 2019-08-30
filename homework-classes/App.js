@@ -30,7 +30,8 @@ class App {
     document.getElementById('dropdown-select').addEventListener('change', event => {
       const selectedRepo = event.target.value;
       const selectedData = this.repos.filter(repoData => repoData.name === selectedRepo)[0];
-      this.fetchContributorsAndRender(selectedRepo);
+      const index = this.repos.indexOf(selectedData);
+      this.fetchContributorsAndRender(index);
     });
   }
 
@@ -54,7 +55,7 @@ class App {
       const repo = this.repos[index];
       const contributors = await repo.fetchContributors();
 
-      const container = document.getElementById('container');
+      const container = document.getElementById('contributors');
       App.clearContainer(container);
 
       const leftDiv = Util.createAndAppend('div', container);

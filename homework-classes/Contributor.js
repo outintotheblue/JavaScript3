@@ -15,10 +15,13 @@ class Contributor {
     // TODO: replace the next line with your code.
     const contributorsDiv = Util.createAndAppend('div', root, { id: 'contributors' });
     for (let contributor of listOfContributors) {
-      Util.createAndAppend('img', contributors, { src: contributor.avatar_url, class: 'contri' });
-      Util.createAndAppend('div', contributors, { text: contributor.login, class: 'contri' });
+      Util.createAndAppend('img', contributors, {
+        src: this.contributor.avatar_url,
+        class: 'contri',
+      });
+      Util.createAndAppend('div', contributors, { text: this.contributor.login, class: 'contri' });
       Util.createAndAppend('div', contributors, {
-        text: contributor.contributions,
+        text: this.contributor.contributions,
         class: 'contri',
       });
     }

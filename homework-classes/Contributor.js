@@ -17,12 +17,15 @@ class Contributor {
     for (let contributor of listOfContributors) {
       Util.createAndAppend('img', contributors, {
         src: this.contributor.avatar_url,
-        class: 'contri',
+        class: 'contributors-detail',
       });
-      Util.createAndAppend('div', contributors, { text: this.contributor.login, class: 'contri' });
+      Util.createAndAppend('div', contributors, {
+        text: this.contributor.login,
+        class: 'contributors-detail',
+      });
       Util.createAndAppend('div', contributors, {
         text: this.contributor.contributions,
-        class: 'contri',
+        class: 'contributors-detail',
       });
     }
     //Util.createAndAppend('pre', container, { text: JSON.stringify(this.contributor, null, 2) });

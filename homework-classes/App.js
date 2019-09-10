@@ -13,10 +13,10 @@ class App {
    */
   async initialize(url) {
     const root = document.getElementById('root');
+    Util.createAndAppend('h1', root, { text: 'REPOSITORIES' });
     Util.createAndAppend('select', root, { id: 'dropdown-select' });
     Util.createAndAppend('div', root, { id: 'details' });
     Util.createAndAppend('div', root, { id: 'contributors' });
-    Util.createAndAppend('h1', root, { text: 'REPOSITORIES' });
 
     try {
       const repos = await Util.fetchJSON(url);
@@ -29,7 +29,9 @@ class App {
     }
     document.getElementById('dropdown-select').addEventListener('change', event => {
       const selectedRepo = event.target.value;
-      const selectedData = this.repos.filter(repoData => repoData.name === selectedRepo)[0];
+      const selectedData = this.repos.filter(
+        repoData => repoData.repository.name === selectedRepo,
+      )[0];
       const index = this.repos.indexOf(selectedData);
       this.fetchContributorsAndRender(index);
     });
@@ -61,7 +63,7 @@ class App {
       const leftDiv = Util.createAndAppend('div', container);
       const rightDiv = Util.createAndAppend('div', container);
 
-      const contributorList = Util.createAndAppend('ul', rightDiv);
+      const contributorList = Util.createAndAppend('div', rightDiv);
 
       repo.render(leftDiv);
 

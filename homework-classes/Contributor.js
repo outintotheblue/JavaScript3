@@ -13,21 +13,19 @@ class Contributor {
    */
   render(container) {
     // TODO: replace the next line with your code.
-    const contributorsDiv = Util.createAndAppend('div', root, { id: 'contributors' });
-    for (let contributor of listOfContributors) {
-      Util.createAndAppend('img', contributors, {
-        src: this.contributor.avatar_url,
-        class: 'contributors-detail',
-      });
-      Util.createAndAppend('div', contributors, {
-        text: this.contributor.login,
-        class: 'contributors-detail',
-      });
-      Util.createAndAppend('div', contributors, {
-        text: this.contributor.contributions,
-        class: 'contributors-detail',
-      });
-    }
-    //Util.createAndAppend('pre', container, { text: JSON.stringify(this.contributor, null, 2) });
+    const contributorsDiv = Util.createAndAppend('div', root, { id: 'contributorDiv' });
+    Util.createAndAppend('img', contributorDiv, {
+      src: this.contributor.avatar_url,
+      class: 'contributors-detail',
+    });
+    Util.createAndAppend('div', contributorDiv, {
+      text: this.contributor.login,
+      class: 'contributors-detail',
+    });
+    Util.createAndAppend('div', contributorDiv, {
+      text: this.contributor.contributions,
+      class: 'contributors-detail',
+    });
   }
+  //Util.createAndAppend('pre', container, { text: JSON.stringify(this.contributor, null, 2) });
 }

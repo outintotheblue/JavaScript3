@@ -10,15 +10,15 @@ class Contributor {
    */
   render(container) {
     const contributorsDiv = Util.createAndAppend('div', root, { id: 'contributorDiv' });
-    Util.createAndAppend('img', contributorDiv, {
+    Util.createAndAppend('img', container, {
       src: this.contributor.avatar_url,
       class: 'contributors-detail',
     });
-    Util.createAndAppend('p', contributorDiv, {
+    Util.createAndAppend('p', container, {
       text: this.contributor.login,
       class: 'contributors-detail',
     });
-    Util.createAndAppend('p', contributorDiv, {
+    Util.createAndAppend('p', container, {
       text: this.contributor.contributions,
       class: 'contributors-detail',
     });

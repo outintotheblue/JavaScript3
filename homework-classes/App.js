@@ -1,14 +1,11 @@
 'use strict';
 
-/* global Util, Repository, Contributor */
-
 class App {
   constructor(url) {
     this.initialize(url);
   }
 
   /**
-   * Initialization
    * @param {string} url The GitHub URL for obtaining the organization's repositories.
    */
   async initialize(url) {
@@ -38,7 +35,6 @@ class App {
   }
 
   /**
-   * Removes all child elements from a container element
    * @param {*} container Container element to clear
    */
   static clearContainer(container) {
@@ -48,25 +44,18 @@ class App {
   }
 
   /**
-   * Fetch contributor information for the selected repository and render the
-   * repo and its contributors as HTML elements in the DOM.
    * @param {number} index The array index of the repository.
    */
   async fetchContributorsAndRender(index) {
     try {
       const repo = this.repos[index];
       const contributors = await repo.fetchContributors();
-
       const container = document.getElementById('contributors');
       App.clearContainer(container);
-
       const leftDiv = Util.createAndAppend('div', container);
       const rightDiv = Util.createAndAppend('div', container);
-
       const contributorList = Util.createAndAppend('div', rightDiv);
-
       repo.render(leftDiv);
-
       contributors
         .map(contributor => new Contributor(contributor))
         .forEach(contributor => contributor.render(contributorList));
@@ -80,7 +69,7 @@ class App {
    * @param {Error} error An Error object describing the error.
    */
   renderError(error) {
-    console.error(error); // TODO: replace with your own code
+    console.error(error);
   }
 }
 

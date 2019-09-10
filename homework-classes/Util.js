@@ -15,18 +15,6 @@ class Util {
     });
     return elem;
   }
-  /* 
-  static sortByName(repoObjA, repoObjB) {
-    const nameA = repoObjA.name.toUpperCase(); // ignore upper and lowercase
-    const nameB = repoObjB.name.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  } */
 
   static fetchJSON(url) {
     return new Promise((resolve, reject) => {
